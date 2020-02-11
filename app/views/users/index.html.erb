@@ -1,0 +1,13 @@
+<% provide(:title, 'All users') %>
+<h1>全てのユーザー</h1>
+
+<%= will_paginate %>
+
+<ul class="users">
+  <% @users.each do |user| %>
+<%= render @users %>
+<%# Userクラスのuser変数に対してrenderを実行している。自動的にview内の_user/html.erbを探して実行する。Railsは@usersをUserオブジェクトのリストと推測する。　%>
+  <% end %>
+</ul>
+
+<%= will_paginate %>

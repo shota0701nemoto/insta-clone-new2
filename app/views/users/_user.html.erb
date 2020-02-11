@@ -1,0 +1,11 @@
+<%# index.html.erbからrenderで表示される　%>
+<li>
+  <%= gravatar_for user, size: 50 %>
+  <%= link_to user.name, user %>
+
+  <%# 管理者のみに表示されるユーザー削除リンクの表示。場所は　%>
+  <% if current_user.admin? && !current_user?(user) %>
+  | <%= link_to "delete", user, method: :delete,
+                                data: { confirm: "You sure?" } %>
+<% end %>
+</li>
