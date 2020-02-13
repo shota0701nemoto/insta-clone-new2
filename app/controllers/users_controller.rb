@@ -11,9 +11,9 @@ end
 
 
   def show
-    @user = User.find(params[:id])  #findはモデルの検索機能を持つメソッド。モデルと紐づいているデータベースのテーブルからレコードを1つ取り出す際に使う。
-                                    #paramsはRails（route?）で送られてきた値を受け取るためのメソッド。get、post、formを使って送信される。
-                                    #params[:カラム名]
+    @user = User.find(params[:id])                                         #findはモデルの検索機能を持つメソッド。モデルと紐づいているデータベースのテーブルからレコードを1つ取り出す際に使う。
+    @microposts = @user.microposts.paginate(page: params[:page])       #paramsはRails（route?）で送られてきた値を受け取るためのメソッド。get、post、formを使って送信される。
+                                                                           #params[:カラム名]
     # => app/views/users/show.html.erb
     # debugger
   end
@@ -69,14 +69,6 @@ end
 
   # beforeアクション
 
-  # ログイン済みユーザーかどうか確認
-  def logged_in_user
-    unless logged_in?
-      store_location
-      flash[:danger] = "Please log in."
-      redirect_to login_url
-    end
-    end
 
   # 正しいユーザーかどうか確認
   def correct_user
