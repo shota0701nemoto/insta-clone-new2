@@ -1,5 +1,5 @@
 class UsersController < ApplicationController
-  before_action :logged_in_user, only: [:index, :edit, :update, :destroy] #index、edit、update、destroyアクションにはログインしないといけない。
+  before_action :logged_in_user, only: [:index, :edit, :update, :destroy, :following, :followers] #index、edit、update、destroyアクションにはログインしないといけない。
   before_action :correct_user,   only: [:edit, :update] #ログインしているユーザーのみ編集、更新ができる
   before_action :admin_user,     only: :destroy #管理者だけがユーザー削除できる
 
@@ -57,6 +57,21 @@ end
    flash[:success] = "User deleted"
    redirect_to users_url
  end
+
+ def following
+    @title = "Following"
+    @user  = User.find(params[:id])
+    @users = @user.following.paginate(page: params[:page])
+    render 'show_follow'
+  end
+
+  def followers
+    @title = "Followers"
+    @user  = User.find(params[:id])
+    @users = @user.followers.paginate(page: params[:page])
+    render 'show_follow'
+  end
+
 
   private
 
