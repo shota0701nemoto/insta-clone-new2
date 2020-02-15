@@ -6,7 +6,7 @@ class UsersController < ApplicationController
   # GET /users/:id
 
   def index
-    @users = User.paginate(page: params[:page]) #Userテーブルのデータを全て表示
+      @users = User.paginate(page: params[:page]).search(params[:search]) #Userテーブルのデータを全て表示
 end
 
 
