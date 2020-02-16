@@ -24,7 +24,7 @@ end
   resources :password_resets,     only: [:new, :create, :edit, :update]
 
 
-  resources :microposts,          only: [:create, :destroy] do
+  resources :microposts,          only: [:create, :destroy, :show] do
     resources :comments ,only: [:show]
   end
 

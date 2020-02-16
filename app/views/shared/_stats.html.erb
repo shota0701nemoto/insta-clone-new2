@@ -1,4 +1,4 @@
-<% @user ||= current_user %>
+<% @user ||= current_user %> <%#現在のユーザーを取得。 %>
 <div class="stats">
   <a href="<%= following_user_path(@user) %>">
     <strong id="follow" class="stat">
