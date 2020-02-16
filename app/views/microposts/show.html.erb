@@ -1,0 +1,21 @@
+<h1>投稿詳細ページ</h1>
+<h3><%= @micropost.user.email %></h3>
+<h3><%= @micropost.content %></h3>
+
+<h2>コメント一覧</h2>
+<% @comments.each do |c| %>
+  <div>
+    <a href="/users/<%= @micropost.user.id %>"><%= c.user.email %></a>
+    <a href="/microposts/<%= micropost.id %>"><%= c.micropost.content %></a>    <%=#仮 %>
+
+    <hr>
+  </div>
+<% end %>
+
+<%= form_for [@post, @comment] do |f| %>
+  <%= f.text_field :content %>
+  <br>
+  <%= f.submit 'コメントする' %>
+<% end %>
+
+<%= link_to "ホームへ戻る", posts_path %>

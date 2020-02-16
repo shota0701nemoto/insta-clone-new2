@@ -5,6 +5,10 @@ class UsersController < ApplicationController
 
   # GET /users/:id
 
+  def show
+      end
+  
+  
   def index
       @users = User.paginate(page: params[:page]).search(params[:search]) #Userテーブルのデータを全て表示
 end
@@ -12,8 +16,10 @@ end
 
   def show
     @user = User.find(params[:id])                                         #findはモデルの検索機能を持つメソッド。モデルと紐づいているデータベースのテーブルからレコードを1つ取り出す際に使う。
-    @microposts = @user.microposts.paginate(page: params[:page])       #paramsはRails（route?）で送られてきた値を受け取るためのメソッド。get、post、formを使って送信される。
-                                                                           #params[:カラム名]
+    @microposts = @user.microposts.paginate(page: params[:page])       #paramsはRails（route?）で送られてきた値を受け取るためのメソッド。get、post、formを使って送信される。 #params[:カラム名]
+    
+
+
     # => app/views/users/show.html.erb
     # debugger
   end

@@ -17,6 +17,7 @@ gem 'bootstrap-will_paginate', '1.0.0'
 gem 'faker',          '1.7.3'
 gem 'carrierwave',             '1.2.2'
 gem 'mini_magick',             '4.7.0'
+gem 'ransack'
 
 group :development, :test do
   gem 'sqlite3', '1.3.13'

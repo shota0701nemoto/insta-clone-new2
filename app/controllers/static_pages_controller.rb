@@ -2,11 +2,20 @@ class StaticPagesController < ApplicationController
   def home
     if logged_in?
    @micropost  = current_user.microposts.build
-   @feed_items = current_user.feed.paginate(page: params[:page])
- end
+      if params[:q]
+        relation = Micropost.joins(:user)
+        @feed_items = relation.merge(User.search_by_keyword(params[:q]))
+                        .or(relation.search_by_keyword(params[:q]))
+                        .paginate(page: params[:page]) #feed_itemsの定義。
+        else
+      @feed_items = current_user.feed.paginate(page: params[:page])
+      end
+
+    end
+  end
     # app/views/リソース名/アクション名.html.erb
     # app/views/static_pages/home.html.erb
-  end
+
 
   def help
   end
