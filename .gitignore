@@ -7,6 +7,15 @@
 # Ignore bundler config.
 /.bundle
 
+# その他無視するファイル
+vendor
+tests
+bin
+lib
+public
+test
+
+
 # Ignore the default SQLite database.
 /db/*.sqlite3
 /db/*.sqlite3-journal
