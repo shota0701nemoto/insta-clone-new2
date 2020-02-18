@@ -8,12 +8,12 @@
 /.bundle
 
 # その他無視するファイル
-vendor
-tests
-bin
-lib
-public
-test
+/vendor
+/tests
+/bin
+/lib
+/public
+/test
 
 
 # Ignore the default SQLite database.
